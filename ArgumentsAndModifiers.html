@@ -9,19 +9,40 @@
   </head>
   <body>
     <div id="app">
-      <h1>{{ name }}</h1>
+      <!--<h1>{{ name }}</h1>
       <div v-on:click="changeName('Steve')">Click me!</div>
+        ////////////////////////////////////////////////////
+      <form v-on:submit.prevent="handleForm">
+        <input type="text" />
+        <button type="submit">Submit</button>
+      </form>
+      //////////////////////////////////////////////////////
+      -->
+      <form v-on:submit.prevent="formHandler">
+        <label>Name</label>
+        <input type="text" v-model="formData.name" />
+        <hr />
+
+        <label>Lastname</label>
+        <input type="text" v-model="formData.lastname" />
+        <hr />
+
+        <button type="submit">Submit</button>
+      </form>
     </div>
   </body>
   <script>
     new Vue({
       el: "#app",
       data: {
-        name: "Francis",
+        formData: {
+          name: "",
+          lastName: "",
+        },
       },
       methods: {
-        changeName(newName) {
-          this.name = newName;
+        formHandler() {
+          console.log(this.formData);
         },
       },
     });
