@@ -9,24 +9,32 @@
   </head>
   <body>
     <div id="app">
-      <img v-bind:src="src" v-bind:alt="alt" />
-      <a v-bind:href="link">Go to Google</a>
-      <hr />
-      <p v-text="txt"></p>
-      <hr />
-      <div v-html="myHtml"></div>
+      <div class="box" v-on:mousemove="getCoord">Hover me</div>
+      <p>x : {{ x }}</p>
+      <p>y : {{ y }}</p>
     </div>
   </body>
   <script>
     new Vue({
       el: "#app",
       data: {
-        src: "https://picsum.photos/200/300",
-        alt: "Another image",
-        link: "http://google.com",
-        txt: "Hallo, i am here",
-        myHtml: "<strong>Francis jones</strong>",
+        name: "Francis",
+        x: 0,
+        y: 0,
+      },
+      methods: {
+        getCoord(event) {
+          this.x = event.clientX;
+          this.y = event.clientY;
+        },
       },
     });
   </script>
+  <style>
+    .box {
+      background: red;
+      width: 200px;
+      height: 200px;
+    }
+  </style>
 </html>
